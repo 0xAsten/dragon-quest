@@ -107,3 +107,58 @@
     left: 100%;
   }
 }
+
+.result {
+  display: flex;
+  color: wheat;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result .round {
+  width: 50%;
+}
+
+.result .round p {
+  text-align: left;
+  font-size: 24px;
+}
+
+.result table {
+  width: 50%;
+  text-align: left;
+}
+
+.result table thead tr th {
+  color: darkorange;
+}
+
+.desc {
+  width: 50%;
+  text-align: left;
+}
+
+.desc .hero {
+  color: rgb(23, 176, 23);
+}
+
+.desc .monster {
+  color: rgb(212, 158, 192);
+}
+
+.desc .damage {
+  color: red;
+  font-size: 20px;
+}
+
+.final {
+  font-size: 20px;
+}
+
+.final .win {
+  color: rgb(23, 176, 23);
+}
+
+.final .lose {
+  color: rgb(212, 158, 192);
+}
