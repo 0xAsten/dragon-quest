@@ -1,21 +1,34 @@
 .App {
   text-align: center;
+  background: linear-gradient(-45deg, #2a1d02, #2d2305, #694a0c, #270c06);
+  animation: gradientBG 15s ease infinite;
+  background-size: 400% 400%;
+  min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* keyframes for changing the body background color */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  50% {
+    background-position: 100% 50%;
+  }
+
+  1000% {
+    background-position: 0% 50%;
   }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  display: flex;
+  justify-content: right;
+  padding: 20px;
+  height: 80px;
+}
+
+.App-main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +37,73 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  color: darkorange;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.title,
+.description {
+  text-align: center;
+}
+
+.description {
+  margin: 2rem 2rem;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.button {
+  margin-top: 20px;
+  width: 30%;
+  height: 45px;
+  margin-left: 5px;
+  background: #792411;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
+}
+
+.connect {
+  margin-top: 20px;
+  width: 120px;
+  height: 45px;
+  background: #792411;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
+}
+
+.scene {
+  width: 0px;
+  height: 0px;
+  position: relative;
+  animation-name: dragon;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes dragon {
+  0% {
+    left: 0%;
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    left: 25%;
+  }
+  50% {
+    left: 50%px;
+  }
+  75% {
+    left: 75%;
+  }
+  100% {
+    left: 100%;
   }
 }

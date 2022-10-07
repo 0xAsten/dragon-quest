@@ -1,0 +1,200 @@
+[
+  {
+    "members": [
+      {
+        "name": "low",
+        "offset": 0,
+        "type": "felt"
+      },
+      {
+        "name": "high",
+        "offset": 1,
+        "type": "felt"
+      }
+    ],
+    "name": "Uint256",
+    "size": 2,
+    "type": "struct"
+  },
+  {
+    "data": [
+      {
+        "name": "implementation",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "Upgraded",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "previousAdmin",
+        "type": "felt"
+      },
+      {
+        "name": "newAdmin",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "AdminChanged",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "adventurerId",
+        "type": "Uint256"
+      },
+      {
+        "name": "count",
+        "type": "felt"
+      },
+      {
+        "name": "attacker",
+        "type": "felt"
+      },
+      {
+        "name": "defender",
+        "type": "felt"
+      },
+      {
+        "name": "ab",
+        "type": "felt"
+      },
+      {
+        "name": "ac",
+        "type": "felt"
+      },
+      {
+        "name": "attackerHealth",
+        "type": "felt"
+      },
+      {
+        "name": "defenderHealth",
+        "type": "felt"
+      },
+      {
+        "name": "damage",
+        "type": "felt"
+      },
+      {
+        "name": "roll_d20",
+        "type": "felt"
+      },
+      {
+        "name": "is_hit",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "Attack",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "name": "xoroshiro_address",
+        "type": "felt"
+      },
+      {
+        "name": "adventurer_address",
+        "type": "felt"
+      },
+      {
+        "name": "proxy_admin",
+        "type": "felt"
+      }
+    ],
+    "name": "initializer",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "new_implementation",
+        "type": "felt"
+      }
+    ],
+    "name": "upgrade",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "adventurerId",
+        "type": "Uint256"
+      }
+    ],
+    "name": "combat",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "xoroshiro",
+        "type": "felt"
+      }
+    ],
+    "name": "set_xoroshiro",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "adventurer",
+        "type": "felt"
+      }
+    ],
+    "name": "set_adventurer",
+    "outputs": [],
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "adventurerId",
+        "type": "Uint256"
+      }
+    ],
+    "name": "get_count",
+    "outputs": [
+      {
+        "name": "count",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "get_xoroshiro_address",
+    "outputs": [
+      {
+        "name": "address",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "get_adventurer_address",
+    "outputs": [
+      {
+        "name": "address",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
