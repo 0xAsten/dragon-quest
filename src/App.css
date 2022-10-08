@@ -80,8 +80,8 @@
 }
 
 .scene {
-  width: 0px;
-  height: 0px;
+  /* width: 0px;
+  height: 0px; */
   position: relative;
   animation-name: dragon;
   animation-duration: 6s;
@@ -113,10 +113,11 @@
   color: wheat;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .result .round {
-  width: 50%;
+  width: 100%;
 }
 
 .result .round p {
@@ -125,7 +126,7 @@
 }
 
 .result table {
-  width: 50%;
+  width: 100%;
   text-align: left;
 }
 
@@ -134,7 +135,7 @@
 }
 
 .desc {
-  width: 50%;
+  width: 100%;
   text-align: left;
 }
 
@@ -153,6 +154,7 @@
 
 .final {
   font-size: 20px;
+  width: 50%;
 }
 
 .final .win {
