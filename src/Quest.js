@@ -1,28 +1,32 @@
 import "./App.css";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Contract, hash, Provider, defaultProvider } from "starknet";
-import dragonQuestAbi from "./abis/dragonQuest_abi.json";
 
+import dragonQuestAbi from "./abis/dragonQuest_abi.json";
 import Board from "./components/Board";
-function Quest(props) {
+import { UserContext } from "./contexts/user.context";
+
+function Quest() {
   const [combatting, setCombatting] = useState(false);
   const [events, setEvents] = useState([]);
   const [final, setFinal] = useState(0);
+
+  const { currentUser } = useContext(UserContext);
 
   const combat = async () => {
     try {
       const contract = new Contract(
         dragonQuestAbi,
         contractAddress,
-        props.provider
+        currentUser.provider
       );
       const { transaction_hash: txHash } = await contract.combat([1, 0]);
 
       setCombatting(true);
       setFinal(0);
 
-      await props.provider.waitForTransaction(txHash);
+      await currentUser.provider.waitForTransaction(txHash);
 
       setCombatting(false);
       setFinal(2);
@@ -88,8 +92,8 @@ function Quest(props) {
     "0x250f83f2365231571f91f0649c14039ca8563fe4ecdf12dbe3ce4c731719151";
 
   return (
-    <main className="App-main">
-      {props.isConnected && (
+    <main className="App-quest">
+      {currentUser.isConnected && (
         <div>
           <h1 className="title">Dragon Quest</h1>
 

@@ -1,42 +1,21 @@
 import "./App.css";
-import React, { useState } from "react";
 
-import { connect } from "get-starknet";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "./Header";
+import Adventurer from "./Adventurer";
 import Quest from "./Quest";
 
-function Game() {
-  const [provider, setProvider] = useState("");
-  const [address, setAddress] = useState("");
-  const [isConnected, setIsConnected] = useState(false);
-
-  const connectWallet = async () => {
-    try {
-      const starknet = await connect();
-      await starknet.enable({ starknetVersion: "v4" });
-      setProvider(starknet.account);
-      setAddress(starknet.selectedAddress);
-      setIsConnected(true);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
+function App() {
   return (
-    <div className="App">
-      <header class="App-header">
-        {isConnected && <Header address={address} />}
-      </header>
-
-      {!isConnected && (
-        <button className="button" onClick={() => connectWallet()}>
-          Connect Wallet
-        </button>
-      )}
-      <Quest provider={provider} isConnected={isConnected} />
-    </div>
+    <Routes>
+      <Route path="/" element={<Header />}>
+        <Route index element={<Adventurer />} />
+        <Route path="quest" element={<Quest />} />
+      </Route>
+    </Routes>
   );
 }
 
-export default Game;
+export default App;
