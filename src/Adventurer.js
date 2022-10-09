@@ -121,7 +121,9 @@ function Adventurer() {
           </div>
         )}
       </div>
-      {count == 0 && <p class="hint">No Adventurer Yet</p>}
+      {count == 0 && !isMinting && !isLoading && (
+        <p class="hint">No Adventurer Yet</p>
+      )}
     </Fragment>
   );
 }
