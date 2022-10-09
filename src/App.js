@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Header />}>
         <Route index element={<Adventurer />} />
-        <Route path="quest" element={<Quest />} />
+        <Route path="quest/:tokenId" element={<Quest />} />
       </Route>
     </Routes>
   );

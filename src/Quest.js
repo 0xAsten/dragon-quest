@@ -2,6 +2,7 @@ import "./App.css";
 
 import React, { useState, useContext } from "react";
 import { Contract, hash, Provider, defaultProvider } from "starknet";
+import { useParams } from "react-router-dom";
 
 import dragonQuestAbi from "./abis/dragonQuest_abi.json";
 import Board from "./components/Board";
@@ -14,6 +15,8 @@ function Quest() {
 
   const { currentUser } = useContext(UserContext);
 
+  const { tokenId } = useParams();
+
   const combat = async () => {
     try {
       const contract = new Contract(
@@ -21,7 +24,7 @@ function Quest() {
         contractAddress,
         currentUser.provider
       );
-      const { transaction_hash: txHash } = await contract.combat([1, 0]);
+      const { transaction_hash: txHash } = await contract.combat([tokenId, 0]);
 
       setCombatting(true);
       setFinal(0);
@@ -115,7 +118,8 @@ function Quest() {
       <div class="final">
         {combatting && (
           <div class="scene">
-            <img src={process.env.PUBLIC_URL + "dragon.png"}></img>
+            {/* <img src={process.env.PUBLIC_URL + "dragon.png"}></img> */}
+            <img src="/dragon.png"></img>
           </div>
         )}
 

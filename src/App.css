@@ -204,6 +204,17 @@ button:hover {
   );
 }
 
+.adventurer :hover {
+  background: linear-gradient(
+    -90deg,
+    transparent,
+    rgb(241, 220, 178),
+    transparent
+  );
+  border-radius: 8px;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
 .adventurer p {
   margin-block-start: 0px;
   margin-block-end: 1rem;
@@ -216,4 +227,45 @@ button:hover {
 .hint {
   font-size: 32px;
   color: wheat;
+}
+
+.adventurer-loading {
+  background: linear-gradient(
+    -90deg,
+    transparent,
+    rgba(241, 220, 178, 0.1),
+    transparent
+  );
+  animation: blinkingBackground 2s infinite;
+}
+
+.adventurer-loading img {
+  height: 300px;
+}
+
+@keyframes blinkingBackground {
+  0% {
+    background: linear-gradient(
+      -90deg,
+      transparent,
+      rgb(97, 68, 11),
+      transparent
+    );
+  }
+  50% {
+    background: linear-gradient(
+      -90deg,
+      transparent,
+      rgb(162, 128, 61),
+      transparent
+    );
+  }
+  100% {
+    background: linear-gradient(
+      -90deg,
+      transparent,
+      rgb(228, 189, 112),
+      transparent
+    );
+  }
 }

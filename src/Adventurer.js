@@ -1,5 +1,5 @@
 import React, { useState, useContext, Fragment, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import { Contract, uint256, number } from "starknet";
 
 import { UserContext } from "./contexts/user.context";
@@ -13,12 +13,14 @@ function Adventurer() {
   const [count, setCount] = useState(-1);
   const [adventurers, setAdventurers] = useState([]);
   const [isMinting, setIsMinting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const contractAddress =
     "0x064c4c4e497c52b046c09f7565e61d2d2a5da9b020bc8c9fd50aff0371b7a6b0";
 
   const getAdventurers = async () => {
     try {
+      setIsLoading(true);
       const contract = new Contract(
         adventurerAbi,
         contractAddress,
@@ -41,6 +43,8 @@ function Adventurer() {
     } catch (error) {
       alert(error.message);
     }
+
+    setIsLoading(false);
   };
 
   const getTokenByIndex = async (contract, i) => {
@@ -53,7 +57,10 @@ function Adventurer() {
 
     return (
       <div key={adventurerId} className="adventurer">
-        <img src={process.env.PUBLIC_URL + "adventurer.png"} />
+        <Link to={"/quest/" + adventurerId}>
+          {/* <img src={process.env.PUBLIC_URL + "adventurer.png"} /> */}
+          <img src={"/adventurer.png"} />
+        </Link>
         <p># {adventurerId}</p>
       </div>
     );
@@ -99,7 +106,7 @@ function Adventurer() {
       {currentUser.isConnected && (
         <button
           className="button"
-          disabled={isMinting}
+          disabled={isMinting || isLoading}
           onClick={() => mintAdventurer()}
         >
           Mint An Adventurer
@@ -108,6 +115,11 @@ function Adventurer() {
 
       <div className="App-adventurer">
         {currentUser.isConnected && <Fragment>{adventurers}</Fragment>}
+        {(isMinting || isLoading) && (
+          <div className="adventurer-loading">
+            <img></img>
+          </div>
+        )}
       </div>
       {count == 0 && <p class="hint">No Adventurer Yet</p>}
     </Fragment>
