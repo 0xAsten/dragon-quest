@@ -45,7 +45,6 @@ function Quest() {
       const { events: events } = await defaultProvider.getTransactionReceipt(
         txHash
       );
-      console.log(events);
       setEvents(events);
     } catch (error) {
       alert(error.message);
@@ -116,14 +115,13 @@ function Quest() {
       <div class="final">
         {combatting && (
           <div class="scene">
-            <img src={process.env.PUBLIC_URL + "red-dragon.png"}></img>
+            <img src={process.env.PUBLIC_URL + "dragon.png"}></img>
           </div>
         )}
-        {/* {final >= 1 && } */}
 
         {/* final result */}
         {final >= 1 && (
-          <div class="">
+          <div class="results">
             <div>{renderResult()}</div>
             {final == 1 ? (
               <p class="win">

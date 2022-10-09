@@ -68,6 +68,18 @@
   cursor: pointer;
 }
 
+button:hover {
+  border: 1px solid #792411;
+  background-color: #a0321a;
+  color: wheat;
+}
+
+.button:disabled {
+  border: 1px solid #50170b;
+  background-color: #502222;
+  color: rgb(155, 122, 122);
+}
+
 .connect {
   margin-top: 20px;
   width: 120px;
@@ -80,14 +92,18 @@
 }
 
 .scene {
-  /* width: 0px;
-  height: 0px; */
+  width: 500px;
+  /* height: 0px; */
   position: relative;
   animation-name: dragon;
   animation-duration: 6s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
+  animation-direction: alternate;
+}
+
+.scene img {
+  width: 500px;
 }
 
 @keyframes dragon {
@@ -95,16 +111,16 @@
     left: 0%;
   }
   25% {
-    left: 25%;
+    left: 15%;
   }
   50% {
-    left: 50%px;
+    left: 30%;
   }
   75% {
-    left: 75%;
+    left: 45%;
   }
   100% {
-    left: 100%;
+    left: 60%;
   }
 }
 
@@ -154,7 +170,7 @@
 
 .final {
   font-size: 20px;
-  width: 50%;
+  width: 100%;
 }
 
 .final .win {
@@ -163,4 +179,41 @@
 
 .final .lose {
   color: rgb(212, 158, 192);
+}
+
+.final .results {
+  width: 50%;
+  margin: auto;
+}
+
+.App-adventurer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px 20px;
+  font-size: 32px;
+  color: wheat;
+}
+
+.adventurer {
+  background: linear-gradient(
+    -90deg,
+    transparent,
+    rgba(241, 220, 178, 0.1),
+    transparent
+  );
+}
+
+.adventurer p {
+  margin-block-start: 0px;
+  margin-block-end: 1rem;
+}
+
+.adventurer img {
+  height: 300px;
+}
+
+.hint {
+  font-size: 32px;
+  color: wheat;
 }

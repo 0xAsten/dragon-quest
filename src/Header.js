@@ -8,7 +8,6 @@ import { UserContext } from "./contexts/user.context";
 
 function Header() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  console.log(currentUser);
 
   const connectWallet = async () => {
     try {
