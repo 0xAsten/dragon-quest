@@ -1,11 +1,11 @@
-import React, { useState, useContext, Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Contract, uint256, number } from "starknet";
+import React, { useState, useContext, Fragment, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Contract, uint256, number } from 'starknet';
 
-import { UserContext } from "./contexts/user.context";
-import adventurerAbi from "./abis/adventurer_abi.json";
+import { UserContext } from './contexts/user.context';
+import adventurerAbi from './abis/adventurer_abi.json';
 
-import "./App.css";
+import './App.css';
 
 function Adventurer() {
   const { currentUser } = useContext(UserContext);
@@ -16,7 +16,7 @@ function Adventurer() {
   const [isLoading, setIsLoading] = useState(false);
 
   const contractAddress =
-    "0x064c4c4e497c52b046c09f7565e61d2d2a5da9b020bc8c9fd50aff0371b7a6b0";
+    '0x064c4c4e497c52b046c09f7565e61d2d2a5da9b020bc8c9fd50aff0371b7a6b0';
 
   const getAdventurers = async () => {
     try {
@@ -56,10 +56,10 @@ function Adventurer() {
     const adventurerId = parseInt(number.toFelt(uint256.uint256ToBN(tokenId)));
 
     return (
-      <div key={adventurerId} className="adventurer">
-        <Link to={"/quest/" + adventurerId}>
+      <div key={adventurerId} className='adventurer'>
+        <Link to={'/quest/' + adventurerId}>
           {/* <img src={process.env.PUBLIC_URL + "adventurer.png"} /> */}
-          <img src={"/adventurer.png"} />
+          <img src={'/adventurer.png'} />
         </Link>
         <p># {adventurerId}</p>
       </div>
@@ -105,7 +105,7 @@ function Adventurer() {
     <Fragment>
       {currentUser.isConnected && (
         <button
-          className="button"
+          className='button'
           disabled={isMinting || isLoading}
           onClick={() => mintAdventurer()}
         >
@@ -113,16 +113,16 @@ function Adventurer() {
         </button>
       )}
 
-      <div className="App-adventurer">
+      <div className='App-adventurer'>
         {currentUser.isConnected && <Fragment>{adventurers}</Fragment>}
         {(isMinting || isLoading) && (
-          <div className="adventurer-loading">
+          <div className='adventurer-loading'>
             <img></img>
           </div>
         )}
       </div>
       {count == 0 && !isMinting && !isLoading && (
-        <p class="hint">No Adventurer Yet</p>
+        <p class='hint'>No Adventurer Yet</p>
       )}
     </Fragment>
   );
