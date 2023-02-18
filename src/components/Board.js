@@ -1,9 +1,9 @@
-import "../App.css";
+import '../App.css'
 
 function Board(props) {
   return (
-    <div class="result">
-      <div class="round">
+    <div class='result'>
+      <div class='round'>
         <p>Round {props.round}</p>
       </div>
       <table>
@@ -28,20 +28,20 @@ function Board(props) {
         </tbody>
       </table>
       {/* critical/good success X cutting damage.  failure   */}
-      <div class="desc">
+      <div class='desc'>
         <p>
-          <span class="hero">You</span> attack{" "}
-          <span class="monster">Dragon</span>,{" "}
-          {parseInt(props.attack[11]) == 1 ? (
+          <span class='hero'>You</span> attack{' '}
+          <span class='monster'>Dragon</span>,{' '}
+          {parseInt(props.attack[11]) === 1 ? (
             <span>
-              {parseInt(props.attack[11]) == 20
-                ? "critical success"
-                : "good success"}{" "}
-              <span class="damage">
-                {parseInt(props.attack[11]) == 20
+              {parseInt(props.attack[11]) === 20
+                ? 'critical success'
+                : 'good success'}{' '}
+              <span class='damage'>
+                {parseInt(props.attack[11]) === 20
                   ? parseInt(props.attack[9]) * 10
                   : parseInt(props.attack[9]) * 5}
-              </span>{" "}
+              </span>{' '}
               cutting damage
             </span>
           ) : (
@@ -50,18 +50,18 @@ function Board(props) {
         </p>
         {props.defend && (
           <p>
-            <span class="monster">Dragon</span> attacks{" "}
-            <span class="hero">You</span>,{" "}
-            {parseInt(props.defend[11]) == 1 ? (
+            <span class='monster'>Dragon</span> attacks{' '}
+            <span class='hero'>You</span>,{' '}
+            {parseInt(props.defend[11]) === 1 ? (
               <span>
-                {parseInt(props.defend[11]) == 20
-                  ? "critical success"
-                  : "good success"}{" "}
-                <span class="damage">
-                  {parseInt(props.defend[11]) == 20
+                {parseInt(props.defend[11]) === 20
+                  ? 'critical success'
+                  : 'good success'}{' '}
+                <span class='damage'>
+                  {parseInt(props.defend[11]) === 20
                     ? parseInt(props.defend[9]) * 10
                     : parseInt(props.defend[9]) * 5}
-                </span>{" "}
+                </span>{' '}
                 cutting damage
               </span>
             ) : (
@@ -71,7 +71,7 @@ function Board(props) {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default Board;
+export default Board

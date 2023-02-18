@@ -1,48 +1,55 @@
-import "./App.css";
+import './App.css'
 
-import React, { useState, useContext } from "react";
-import { Outlet } from "react-router-dom";
-import { connect } from "get-starknet";
+import React, { useContext } from 'react'
+import { Outlet } from 'react-router-dom'
 
-import { UserContext } from "./contexts/user.context";
+import { UserContext } from './contexts/user.context'
+import { useConnectors } from '@starknet-react/core'
 
 function Header() {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext)
 
-  const connectWallet = async () => {
+  const { connectors } = useConnectors()
+
+  const connectWallet = async (connector) => {
     try {
-      const starknet = await connect();
-      await starknet.enable({ starknetVersion: "v4" });
+      await connector.connect()
 
       const user = {
-        provider: starknet.account,
-        address: starknet.selectedAddress,
-        isConnected: true,
-      };
-      setCurrentUser(user);
+        provider: connector._wallet.account,
+        address: connector._wallet.selectedAddress,
+        isConnected: connector._wallet.isConnected,
+      }
+      setCurrentUser(user)
     } catch (error) {
-      alert(error.message);
+      alert(error.message)
     }
-  };
+  }
 
   return (
-    <div className="App">
-      <header class="App-header">
+    <div className='App'>
+      <header class='App-header'>
         {currentUser.isConnected && (
-          <button className="connect">
+          <button className='connect'>
             {currentUser.address.slice(0, 5)}...{currentUser.address.slice(60)}
           </button>
         )}
       </header>
       {!currentUser.isConnected && (
-        <button className="button" onClick={() => connectWallet()}>
-          Connect Wallet
-        </button>
+        <ul>
+          {connectors.map((connector) => (
+            <li key={connector.id()}>
+              <button class='button' onClick={() => connectWallet(connector)}>
+                Connect {connector.id()}
+              </button>
+            </li>
+          ))}
+        </ul>
       )}
 
       <Outlet />
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
