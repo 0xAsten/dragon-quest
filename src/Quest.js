@@ -1,7 +1,7 @@
 import './App.css'
 
 import React, { useState, useContext } from 'react'
-import { Contract, defaultProvider } from 'starknet'
+import { Contract, Provider } from 'starknet'
 import { useParams } from 'react-router-dom'
 
 import dragonQuestAbi from './abis/dragonQuest_abi.json'
@@ -16,6 +16,12 @@ function Quest() {
   const { currentUser } = useContext(UserContext)
 
   const { tokenId } = useParams()
+
+  const provider = new Provider({
+    sequencer: {
+      network: 'goerli-alpha', // 'mainnet-alpha' or 'goerli-alpha'
+    },
+  })
 
   const combat = async () => {
     try {
@@ -45,7 +51,8 @@ function Quest() {
 
   const getEvents = async (txHash) => {
     try {
-      const { events } = await defaultProvider.getTransactionReceipt(txHash)
+      const { status, events } = await provider.getTransactionReceipt(txHash)
+      console.log(status)
       setEvents(events)
     } catch (error) {
       alert(error.message)
