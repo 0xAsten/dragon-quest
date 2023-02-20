@@ -28,14 +28,15 @@ function Quest() {
       const contract = new Contract(
         dragonQuestAbi,
         contractAddress,
-        currentUser.provider
+        currentUser.account
       )
       const { transaction_hash: txHash } = await contract.combat([tokenId, 0])
 
       setCombatting(true)
       setFinal(0)
 
-      await currentUser.provider.waitForTransaction(txHash)
+      // await currentUser.provider.waitForTransaction(txHash)
+      await provider.waitForTransaction(txHash)
 
       setCombatting(false)
       setFinal(2)
@@ -54,6 +55,10 @@ function Quest() {
       const { status, events } = await provider.getTransactionReceipt(txHash)
       console.log(status)
       setEvents(events)
+
+      if (events.length % 2 === 1) {
+        setFinal(1)
+      }
     } catch (error) {
       alert(error.message)
     }
@@ -86,7 +91,7 @@ function Quest() {
         <Board round={Math.floor(i / 2) + 1} attack={attack} defend={null} />
       )
 
-      setFinal(1)
+      // setFinal(1)
     }
 
     return results

@@ -1,6 +1,6 @@
 import React, { useState, useContext, Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Contract, uint256, number } from 'starknet'
+import { Contract, uint256, number, Provider } from 'starknet'
 
 import { UserContext } from './contexts/user.context'
 import adventurerAbi from './abis/adventurer_abi.json'
@@ -18,13 +18,20 @@ function Adventurer() {
   const contractAddress =
     '0x064c4c4e497c52b046c09f7565e61d2d2a5da9b020bc8c9fd50aff0371b7a6b0'
 
+  const provider = new Provider({
+    sequencer: {
+      network: 'goerli-alpha', // 'mainnet-alpha' or 'goerli-alpha'
+    },
+  })
+
   const getAdventurers = async () => {
     try {
       setIsLoading(true)
       const contract = new Contract(
         adventurerAbi,
         contractAddress,
-        currentUser.provider
+        // currentUser.provider
+        provider
       )
       const { balance } = await contract.balanceOf(currentUser.address)
 

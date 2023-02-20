@@ -16,7 +16,7 @@ function Header() {
       await connector.connect()
 
       const user = {
-        provider: connector._wallet.account,
+        account: connector._wallet.account,
         address: connector._wallet.selectedAddress,
         isConnected: connector._wallet.isConnected,
       }
