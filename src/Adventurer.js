@@ -76,7 +76,7 @@ function Adventurer() {
       const contract = new Contract(
         adventurerAbi,
         contractAddress,
-        currentUser.provider
+        currentUser.account
       )
 
       setIsMinting(true)
@@ -88,7 +88,7 @@ function Adventurer() {
         0
       )
 
-      await currentUser.provider.waitForTransaction(txHash)
+      await provider.waitForTransaction(txHash)
       const i = count
       setCount(count + 1)
       const result = await getTokenByIndex(contract, i)
