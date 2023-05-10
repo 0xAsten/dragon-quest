@@ -54,6 +54,8 @@ function Quest() {
     try {
       const { status, events } = await provider.getTransactionReceipt(txHash)
       console.log(status)
+      // keep events except for the last one
+      events.pop()
       setEvents(events)
 
       if (events.length % 2 === 1) {
